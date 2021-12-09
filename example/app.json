@@ -1,0 +1,22 @@
+{
+  "name": "react-native-reanimated-toggle-example",
+  "displayName": "ReanimatedToggle Example",
+  "expo": {
+    "name": "react-native-reanimated-toggle-example",
+    "slug": "react-native-reanimated-toggle-example",
+    "description": "Example app for react-native-reanimated-toggle",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
