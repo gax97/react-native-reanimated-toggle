@@ -1,27 +1,58 @@
 # react-native-reanimated-toggle
 
-React native toggle component built with reanimated
+React native toggle component built with react-native-reanimated and react-native-gesture-handler
+
+- [x] Built with Reanimated
+- [x] Customizable
+- [x] Support for gestures
+- [ ] RTL support
 
 ## Installation
 
 ```sh
+yarn add react-native-reanimated-toggle
+```
+```sh
 npm install react-native-reanimated-toggle
 ```
-
 ## Usage
 
-```js
-import { multiply } from "react-native-reanimated-toggle";
+### Default component
+```jsx
+import { View } from 'react-native';
+import Toggle from 'react-native-reanimated-toggle';
 
-// ...
-
-const result = await multiply(3, 7);
+const App = () => {
+  const [toggled, setToggled] = useState(false);
+  return <View>
+    <Toggle toggled={toggled} onChange={setToggled} />
+  </View>
+}
 ```
+### Customize design
+```jsx
+import { View } from 'react-native';
+import Toggle from 'react-native-reanimated-toggle';
 
-## Contributing
+const App = () => {
+  const [toggled, setToggled] = useState(false);
+  return <Toggle
+    toggled={toggled}
+    onChange={setToggled}
+    thumbOffset={2}
+    thumbSize={32}
+    containerStyle={{ height: 36, width: 72, borderRadius: 32 }}
+    activeTrackColor="black"
+  />
+}
+```
+For more examples check out expo project in [/example](/example) folder.
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
 
 ## License
 
 MIT
+
+
+Project bootstrapped with [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob)
