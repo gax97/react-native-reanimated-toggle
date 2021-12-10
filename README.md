@@ -2,6 +2,10 @@
 
 React native toggle component built with react-native-reanimated and react-native-gesture-handler
 
+- [x] Built with Reanimated
+- [x] Customizable
+- [x] Support for gestures
+
 ## Installation
 For this component to work you need to have installed [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
 and [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) packages.
