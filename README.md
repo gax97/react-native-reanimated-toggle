@@ -8,7 +8,8 @@ React native toggle component built with react-native-reanimated and react-nativ
 - [ ] RTL support
 
 ## Installation
-
+For this component to work you need to have installed [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
+and [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) packages.
 ```sh
 yarn add react-native-reanimated-toggle
 ```
