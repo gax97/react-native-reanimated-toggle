@@ -66,8 +66,10 @@ export type ToggleProps = {
   /**
    * Custom animation on toggle state change.
    * You can either use predefined animations from react-native-reanimated or create your own animation.
-   * @param toggle
-   * @return a number between 0 and 1 that represents the current progress of toggle.
+   * @param toggle - The current state of the toggle.
+   * @param minXDistanceValue - The minimum distance the thumb can move to the left.
+   * @param maxXDistanceValue - The maximum distance the thumb can move to the right.
+   * @return value that represents translationX of the thumb.
    */
   toggleAnimation?: (
     toggled: boolean,
@@ -76,7 +78,7 @@ export type ToggleProps = {
   ) => number;
 
   /**
-   * Determines if the toggle should be controlled with gestures along with press
+   * Enable toggling with gestures.
    */
   enableGestures?: boolean;
 };
