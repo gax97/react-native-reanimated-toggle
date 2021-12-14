@@ -1,6 +1,6 @@
 {
   "name": "react-native-reanimated-toggle",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React native toggle component built with reanimated",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
