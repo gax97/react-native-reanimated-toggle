@@ -39,10 +39,10 @@ const App = () => {
   return <Toggle
     toggled={toggled}
     onChange={setToggled}
-    thumbOffset={2}
-    thumbSize={32}
-    containerStyle={{ height: 36, width: 72, borderRadius: 32 }}
-    activeTrackColor="black"
+    thumbOffset={4}
+    activeTrackColor="orange"
+    trackStyle={{ height: 30, width: 48 }}
+    thumbSize={20}
   />
 }
 ```
