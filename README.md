@@ -1,6 +1,6 @@
 # react-native-reanimated-toggle
 
-React native toggle component built with react-native-reanimated and react-native-gesture-handler
+React native toggle component built with react-native-reanimated
 
 - [x] Built with Reanimated v2
 - [x] Built with typescript
