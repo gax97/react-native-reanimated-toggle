@@ -2,13 +2,13 @@
 
 React native toggle component built with react-native-reanimated and react-native-gesture-handler
 
-- [x] Built with Reanimated
+- [x] Built with Reanimated v2
+- [x] Built with typescript
 - [x] Customizable
-- [x] Support for gestures
+- [ ] Support for gestures
 
 ## Installation
 For this component to work you need to have installed [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)
-and [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) packages.
 ```sh
 yarn add react-native-reanimated-toggle
 ```
@@ -46,6 +46,9 @@ const App = () => {
   />
 }
 ```
+### Demo
+![demo gif](./demo.gif)
+
 For more examples check out expo project in [/example](/example) folder.
 
 

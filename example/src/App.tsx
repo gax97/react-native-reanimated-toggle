@@ -11,7 +11,6 @@ export default function App() {
   const [toggled4, setToggled4] = useState(false);
   const [toggled5, setToggled5] = useState(false);
   const [toggled6, setToggled6] = useState(false);
-  const [toggled7, setToggled7] = useState(false);
   return (
     <View style={styles.container}>
       <ExampleItem title="Default component">
@@ -21,8 +20,9 @@ export default function App() {
         <Toggle
           toggled={toggled2}
           onChange={setToggled2}
+          thumbOffset={4}
           activeTrackColor="orange"
-          containerStyle={{ height: 28, width: 48, borderRadius: 6 }}
+          trackStyle={{ height: 28, width: 48, borderRadius: 6 }}
           thumbSize={20}
           thumbStyle={{ borderRadius: 6 }}
         />
@@ -32,11 +32,10 @@ export default function App() {
         <Toggle
           toggled={toggled3}
           onChange={setToggled3}
-          thumbOffset={2}
-          thumbSize={32}
-          containerStyle={{ height: 36, width: 72, borderRadius: 32 }}
-          activeTrackColor="black"
-          inActiveTrackColor="rgb(200, 200, 200)"
+          thumbOffset={4}
+          activeTrackColor="orange"
+          trackStyle={{ height: 30, width: 48 }}
+          thumbSize={20}
         />
       </ExampleItem>
       <ExampleItem title={'Custom Design - example 3'}>
@@ -46,7 +45,7 @@ export default function App() {
           thumbOffset={-10}
           thumbSize={22}
           thumbStyle={{ borderWidth: 1, borderColor: 'gray' }}
-          containerStyle={{ height: 14, width: 32, borderRadius: 32 }}
+          trackStyle={{ height: 14, width: 32, borderRadius: 32 }}
           activeTrackColor="rgb(87, 64, 248)"
           inActiveTrackColor="rgb(200, 200, 200)"
         />
@@ -61,7 +60,7 @@ export default function App() {
             borderWidth: 2,
             borderColor: 'rgb(87, 64, 248)',
           }}
-          containerStyle={{ height: 28, width: 56, borderRadius: 32 }}
+          trackStyle={{ height: 28, width: 56, borderRadius: 32 }}
           activeTrackColor="rgb(87, 64, 248)"
           inActiveTrackColor="rgb(200, 200, 200)"
           activeThumbColor={'rgb(56,30,227)'}
@@ -72,8 +71,9 @@ export default function App() {
           toggled={false}
           onChange={console.log}
           activeTrackColor="orange"
-          containerStyle={{ height: 30, width: 48 }}
+          trackStyle={{ height: 30, width: 48 }}
           thumbSize={20}
+          thumbOffset={4}
           disabled
           disabledContainerStyle={{ opacity: 0.5 }}
         />
@@ -85,14 +85,6 @@ export default function App() {
           toggleAnimation={(toggled, min, max) =>
             withSpring(toggled ? min : max, { mass: 0.1, damping: 2 })
           }
-        />
-      </ExampleItem>
-      <ExampleItem title="Gestures support">
-        <Toggle
-          toggled={toggled7}
-          onChange={setToggled7}
-          enableGestures
-          containerStyle={{ height: 30, width: 48 }}
         />
       </ExampleItem>
     </View>

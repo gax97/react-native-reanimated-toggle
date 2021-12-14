@@ -3,20 +3,13 @@ import { TouchableWithoutFeedback } from 'react-native';
 import Animated, {
   interpolate,
   interpolateColor,
-  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
   Extrapolate,
   useDerivedValue,
-  runOnJS,
 } from 'react-native-reanimated';
 import type { ToggleProps } from './types';
-import {
-  PanGestureHandler,
-  PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
-import { clamp, snapPoint } from 'react-native-redash';
 
 const defaultAnimation = (
   toggled: boolean,
@@ -33,26 +26,25 @@ const defaultAnimation = (
 export const Toggle: React.FC<ToggleProps> = ({
   toggled,
   onChange,
-  thumbSize = 14,
-  thumbOffset = 6,
-  activeTrackColor = '#48BD4f',
-  inActiveTrackColor = '#dcdada',
+  thumbSize = 32,
+  thumbOffset = 2,
+  activeTrackColor = 'black',
+  inActiveTrackColor = 'rgb(200, 200, 200)',
   activeThumbColor = '#ffffff',
   inActiveThumbColor = '#ffffff',
-  containerStyle,
+  trackStyle,
   hitSlop,
   disabled,
   thumbStyle,
-  disabledContainerStyle,
+  disabledTrackStyle,
   disabledThumbStyle,
   toggleAnimation,
-  enableGestures = false,
 }) => {
   const thumbXPosition = useSharedValue(thumbOffset);
 
-  const containerWidth: number = containerStyle?.width ?? 42;
-  const containerHeight: number = containerStyle?.height ?? 2 * thumbSize;
-  const borderRadius: number = containerStyle?.borderRadius ?? 11;
+  const containerWidth: number = trackStyle?.width ?? 72;
+  const containerHeight: number = trackStyle?.height ?? 36;
+  const borderRadius: number = trackStyle?.borderRadius ?? 32;
   const minXDistanceValue = thumbOffset;
   const maxXDistanceValue = containerWidth - thumbOffset - thumbSize;
 
@@ -84,7 +76,7 @@ export const Toggle: React.FC<ToggleProps> = ({
     onChange(!toggled);
   }, [onChange, toggled]);
 
-  const animatedContainerStyles = useAnimatedStyle(
+  const animatedTrackStyles = useAnimatedStyle(
     () => ({
       backgroundColor: interpolateColor(
         progress.value,
@@ -132,33 +124,6 @@ export const Toggle: React.FC<ToggleProps> = ({
     },
   };
 
-  const animatedGestureHandler = useAnimatedGestureHandler<
-    PanGestureHandlerGestureEvent,
-    { startX: number }
-  >(
-    {
-      onStart: (_, ctx) => {
-        ctx.startX = thumbXPosition.value;
-      },
-      onActive: (event, ctx) => {
-        thumbXPosition.value = clamp(
-          ctx.startX + event.translationX,
-          minXDistanceValue,
-          maxXDistanceValue
-        );
-      },
-      onEnd: (event) => {
-        const snapPointValue = snapPoint(
-          thumbXPosition.value,
-          event.velocityX,
-          [minXDistanceValue, maxXDistanceValue]
-        );
-        thumbXPosition.value = withTiming(snapPointValue);
-        runOnJS(onChange)(snapPointValue > minXDistanceValue);
-      },
-    },
-    [minXDistanceValue, maxXDistanceValue]
-  );
   return (
     <TouchableWithoutFeedback
       hitSlop={hitSlop}
@@ -168,26 +133,20 @@ export const Toggle: React.FC<ToggleProps> = ({
       <Animated.View
         style={[
           { justifyContent: 'center' },
-          animatedContainerStyles,
+          animatedTrackStyles,
           styles.wrapper,
-          containerStyle,
-          disabled && disabledContainerStyle,
+          trackStyle,
+          disabled && disabledTrackStyle,
         ]}
       >
-        <PanGestureHandler
-          onGestureEvent={
-            enableGestures && !disabled ? animatedGestureHandler : undefined
-          }
-        >
-          <Animated.View
-            style={[
-              styles.thumb,
-              animatedThumbStyles,
-              thumbStyle,
-              disabled && disabledThumbStyle,
-            ]}
-          />
-        </PanGestureHandler>
+        <Animated.View
+          style={[
+            styles.thumb,
+            animatedThumbStyles,
+            thumbStyle,
+            disabled && disabledThumbStyle,
+          ]}
+        />
       </Animated.View>
     </TouchableWithoutFeedback>
   );

@@ -16,10 +16,6 @@ export type ToggleProps = {
    */
   thumbSize?: number;
   /**
-   * The width of the toggle container
-   */
-  containerWidth?: number;
-  /**
    * Offset of the thumb from the left and the right side of the container.
    */
   thumbOffset?: number;
@@ -30,7 +26,7 @@ export type ToggleProps = {
   /**
    * The style of the track.
    */
-  containerStyle?: ViewStyle & { width?: number; height?: number };
+  trackStyle?: ViewStyle & { width?: number; height?: number };
   /**
    * Color of the track when the toggle is active.
    */
@@ -58,7 +54,7 @@ export type ToggleProps = {
   /**
    * Container styles when the toggle is disabled.
    */
-  disabledContainerStyle?: ViewStyle;
+  disabledTrackStyle?: ViewStyle;
   /**
    * Thumb styles when the toggle is disabled.
    */
@@ -76,9 +72,4 @@ export type ToggleProps = {
     minXDistanceValue: number,
     maxXDistanceValue: number
   ) => number;
-
-  /**
-   * Enable toggling with gestures.
-   */
-  enableGestures?: boolean;
 };
